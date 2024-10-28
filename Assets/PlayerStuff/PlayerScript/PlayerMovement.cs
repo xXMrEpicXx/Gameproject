@@ -21,7 +21,6 @@ public class PlayerMovement : MonoBehaviour
     public bool isGrounded;
     private float coyoteTime = 0.3f; // Duration of coyote time
     private float coyoteTimer = 0f;
-    Vector3 move;
 
 
 
@@ -87,9 +86,6 @@ public class PlayerMovement : MonoBehaviour
             coyoteTimer -= Time.deltaTime;
         }
 
-
-
-
         // Get input for movement
         float moveX = Input.GetAxis("Horizontal") * moveSpeed;
         float moveZ = Input.GetAxis("Vertical") * moveSpeed;
@@ -112,12 +108,6 @@ public class PlayerMovement : MonoBehaviour
         transform.Rotate(Vector3.up * mouseX);
 
 
-
-
-
-
-
-
     }
 
 
@@ -129,18 +119,13 @@ public class PlayerMovement : MonoBehaviour
 
     void Ult()
     {
-
+        
     }
 
-    void melee()
-    {
-
-    }
 
     void jump()
     {
         isGrounded = Physics.Raycast(transform.position, -transform.up, 1.15f);
-
         if (isGrounded && Input.GetButtonDown("Jump"))
         {
             if (isGrounded || coyoteTimer > 0)
