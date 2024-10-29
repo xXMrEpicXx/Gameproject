@@ -37,6 +37,7 @@ public class PlayerMovement : MonoBehaviour
         Armor = 5;
         rb = GetComponent<Rigidbody>();
         WScript = GetComponentInChildren<Weapon>();
+        jumpForce = 5;
 
     }
 
@@ -66,6 +67,7 @@ public class PlayerMovement : MonoBehaviour
         }
         if (Input.GetButtonDown("Jump"))
         {
+            print("lompat");
             jump();
         }
 
@@ -92,7 +94,6 @@ public class PlayerMovement : MonoBehaviour
 
         // Create movement vector based on input
         Vector3 move = transform.right * moveX + transform.forward * moveZ;
-        print(rb.velocity);
 
         // Set the velocity of the Rigidbody
         rb.velocity = new Vector3(move.x, rb.velocity.y, move.z); // Keep the vertical velocity unchanged
@@ -104,7 +105,7 @@ public class PlayerMovement : MonoBehaviour
         verticalRotation -= mouseY;
         verticalRotation = Mathf.Clamp(verticalRotation, -90f, 90f);
 
-        playerCamera.localRotation = Quaternion.Euler(verticalRotation, 0f, 0f);
+        playerCamera.localRotation = Quaternion.Euler(verticalRotation +30, 0f, 0f);
         transform.Rotate(Vector3.up * mouseX);
 
 

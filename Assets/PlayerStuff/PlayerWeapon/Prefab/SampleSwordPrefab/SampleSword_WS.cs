@@ -35,9 +35,4 @@ public class SampleSword_WS : Weapon
         
     }
 
-    void OnCollisionEnter(Collider collider)
-    {
-        print("masuk");
-    }
-
 }
