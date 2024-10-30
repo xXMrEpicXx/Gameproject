@@ -5,7 +5,7 @@ using UnityEngine;
 public class JumpBoost : MonoBehaviour
 {
     public PlayerMovement playerMovement;
-    public float boostedJumpForce = 15f;  // Boosted jump force value
+    public float boostedJumpForce;
     private bool isBoostActive = false;
 
     private float originalJumpForce;
@@ -15,11 +15,11 @@ public class JumpBoost : MonoBehaviour
         // Get the original jump force 
         if (playerMovement != null)
         {
-            originalJumpForce = playerMovement.jumpForce;
+            originalJumpForce = 5f;
         }
         else
         {
-            Debug.LogError("PlayerMovement reference is not assigned.");
+            Debug.LogError("[JumpBoost] PlayerMovement reference is not assigned.");
         }
     }
 
@@ -41,13 +41,23 @@ public class JumpBoost : MonoBehaviour
 
         if (isBoostActive)
         {
-            playerMovement.jumpForce = boostedJumpForce;
-            Debug.Log("Jump boost activated! Increased jump force.");
+            ApplyBoost();
         }
         else
         {
-            playerMovement.jumpForce = originalJumpForce;
-            Debug.Log("Jump boost deactivated. Jump force returned to normal.");
+            ResetJumpForce();
         }
+    }
+
+    void ApplyBoost()
+    {
+        playerMovement.jumpForce = boostedJumpForce;
+        Debug.Log($"[JumpBoost] Boost applied! Jump force set to: {playerMovement.jumpForce}");
+    }
+
+    void ResetJumpForce()
+    {
+        playerMovement.jumpForce = originalJumpForce;
+        Debug.Log($"[JumpBoost] Boost deactivated. Restored jump force to: {originalJumpForce}");
     }
 }
