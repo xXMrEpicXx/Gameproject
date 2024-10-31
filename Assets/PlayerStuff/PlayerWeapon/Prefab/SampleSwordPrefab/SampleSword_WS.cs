@@ -6,13 +6,12 @@ using UnityEngine;
 public class SampleSword_WS : Weapon
 {
     // Start is called before the first frame update
-    public int damage;
-    public Collider Hitbox;
+    public int Damage;
     public float HitBoxTime;
     void Start()
     {
-        HitBoxTime = .6f;
-        Hitbox = GetComponentInParent<Collider>();
+        GameManager = GameObject.FindWithTag("GameManager");
+        HitBoxTime = .6f; 
     }
 
     // Update is called once per frame
@@ -24,16 +23,19 @@ public class SampleSword_WS : Weapon
     public override void Attack()
     {
 
-        Hitbox.enabled = true;
-        HitBoxTime -= Time.deltaTime;
-        
-        if (HitBoxTime <= 0)
-        {
-            Hitbox.enabled = false;
-            HitBoxTime = .6f;
-        }
+    }
 
+    void OnTriggerEnter(UnityEngine.Collider other)
+    {
+        if (!other.transform.CompareTag("Player"))
+        {
+            DamageHandle damageHandler = GameManager.GetComponent<DamageHandle>();
+            damageHandler.DoDamage(Damage,other.transform);
+
+        }
         
     }
+
+
 
 }

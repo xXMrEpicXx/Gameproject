@@ -1462,6 +1462,7 @@ GameObject:
   - component: {fileID: 5257533687463390919}
   - component: {fileID: 4404701402651018804}
   - component: {fileID: 8408059430236161607}
+  - component: {fileID: 7402309135184392991}
   m_Layer: 0
   m_Name: RPGHeroHP
   m_TagString: Untagged
@@ -1585,6 +1586,19 @@ MonoBehaviour:
   WScript: {fileID: 0}
   Ability: {fileID: 0}
   animator: {fileID: 0}
+--- !u!114 &7402309135184392991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1556040939566342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a4d0ab5113787844a2c36c578351def, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 10
 --- !u!1 &1613396906338018
 GameObject:
   m_ObjectHideFlags: 0
@@ -2583,72 +2597,6 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 7956906599204880710}
---- !u!1 &5213820686664442133
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 3016418250543393843}
-  - component: {fileID: 8504950467183189013}
-  - component: {fileID: 6761164294201366802}
-  m_Layer: 0
-  m_Name: Hitbox
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &3016418250543393843
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5213820686664442133}
-  serializedVersion: 2
-  m_LocalRotation: {x: 1, y: 0.000000009778881, z: 0.000000015832475, w: 0}
-  m_LocalPosition: {x: 0.0004, y: 0.1341, z: 0.0103}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1108202169963785968}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8504950467183189013
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5213820686664442133}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76ec47d45e2496c4582a2c42091c0e38, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!65 &6761164294201366802
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5213820686664442133}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.1, y: 0.4, z: 0.1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7325978397298436952
 GameObject:
   m_ObjectHideFlags: 0
@@ -2798,23 +2746,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Short Sword Standart
       objectReference: {fileID: 0}
-    - target: {fileID: 8046948750960427865, guid: bf172d0f9ad8ad84a8b68ce75357ad4d, type: 3}
-      propertyPath: Hitbox
-      value: 
-      objectReference: {fileID: 6761164294201366802}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 2630507542638763401, guid: bf172d0f9ad8ad84a8b68ce75357ad4d, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 3016418250543393843}
+    m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf172d0f9ad8ad84a8b68ce75357ad4d, type: 3}
---- !u!4 &1108202169963785968 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2630507542638763401, guid: bf172d0f9ad8ad84a8b68ce75357ad4d, type: 3}
-  m_PrefabInstance: {fileID: 3161615641333085049}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7847558445082427465 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5118464667818881840, guid: bf172d0f9ad8ad84a8b68ce75357ad4d, type: 3}

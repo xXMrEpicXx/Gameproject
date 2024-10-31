@@ -7,7 +7,6 @@ public class Weapon : MonoBehaviour
 {
     // Start is called before the first frame update
     public Camera cam;
-    public int Damage;
     public float AttackSpeed;
     public float CritChance;
     public float CritDamage;
@@ -30,6 +29,8 @@ public class Weapon : MonoBehaviour
     {
 
     }
+
+    
 
 
     //universal weapon script klo inherit ae ini

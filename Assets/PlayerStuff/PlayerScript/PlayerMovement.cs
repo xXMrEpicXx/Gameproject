@@ -1,14 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
 
+
+    public bool Attackstate ;
+
     public float moveSpeed = 5f; // Speed of the player movement
     public float lookSpeed = 2f;  // Speed of the camera look
     public Transform playerCamera; // Reference to the camera transform
     public float sensitivity = 2f; // Mouse sensitivity
+    
 
 
 
@@ -76,9 +81,12 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-
-            WScript.Attack();
+            animator.SetBool("Attacking",true);
+            StartCoroutine(Attacking());
+            print("ayam");
+            
         }
+
         if (Input.GetButtonDown("Jump"))
         {
             print("lompat");
@@ -88,6 +96,7 @@ public class PlayerMovement : MonoBehaviour
 
 
     }
+
 
     void MovementLogic()
     {
@@ -105,14 +114,6 @@ public class PlayerMovement : MonoBehaviour
         // Get input for movement
         float moveX = Input.GetAxis("Horizontal") * moveSpeed;
         float moveZ = Input.GetAxis("Vertical") * moveSpeed;
-        if(moveX != 0||moveZ != 0) 
-        {
-            WalkingAnim();
-        }
-        else
-        {
-            animator.SetBool("IsWalking",false);
-        }
 
         // Create movement vector based on input
         Vector3 move = (transform.right * moveX + transform.forward * moveZ)*Time.deltaTime;
@@ -165,5 +166,21 @@ public class PlayerMovement : MonoBehaviour
     void WalkingAnim()
     {
         animator.SetBool("isWalking",true);
+    }
+
+
+
+    IEnumerator Attacking()
+    {
+        Collider collider = GetComponentInChildren<Collider>();
+        collider.enabled = true;
+
+        
+
+        print("goreng");
+        // suspend execution for 5 seconds
+        yield return new WaitForSeconds(.25f);
+        animator.SetBool("Attacking",false);
+        
     }
 }
