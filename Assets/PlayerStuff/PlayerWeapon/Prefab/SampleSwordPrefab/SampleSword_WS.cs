@@ -12,6 +12,7 @@ public class SampleSword_WS : Weapon
     void Start()
     {
         HitBoxTime = .6f;
+        Hitbox = GetComponentInParent<Collider>();
     }
 
     // Update is called once per frame

@@ -21,6 +21,7 @@ public class PlayerMovement : MonoBehaviour
     public bool isGrounded;
     private float coyoteTime = 0.3f; // Duration of coyote time
     private float coyoteTimer = 0f;
+    Vector3 move;
 
 
 
@@ -28,6 +29,18 @@ public class PlayerMovement : MonoBehaviour
     public int Armor;
     public Weapon WScript;
     public ActiveAbility Ability;
+
+
+
+    public Animator animator;
+
+
+
+
+
+
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -37,7 +50,7 @@ public class PlayerMovement : MonoBehaviour
         Armor = 5;
         rb = GetComponent<Rigidbody>();
         WScript = GetComponentInChildren<Weapon>();
-        jumpForce = 5;
+        animator = GetComponent<Animator>();
 
     }
 
@@ -45,6 +58,7 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         MovementLogic();
+
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             Dash();
@@ -91,12 +105,20 @@ public class PlayerMovement : MonoBehaviour
         // Get input for movement
         float moveX = Input.GetAxis("Horizontal") * moveSpeed;
         float moveZ = Input.GetAxis("Vertical") * moveSpeed;
+        if(moveX != 0||moveZ != 0) 
+        {
+            WalkingAnim();
+        }
+        else
+        {
+            animator.SetBool("IsWalking",false);
+        }
 
         // Create movement vector based on input
-        Vector3 move = transform.right * moveX + transform.forward * moveZ;
+        Vector3 move = (transform.right * moveX + transform.forward * moveZ)*Time.deltaTime;
 
         // Set the velocity of the Rigidbody
-        rb.velocity = new Vector3(move.x, rb.velocity.y, move.z); // Keep the vertical velocity unchanged
+        rb.velocity = new Vector3(move.x*moveSpeed, rb.velocity.y, move.z*moveSpeed); // Keep the vertical velocity unchanged
 
         // Mouse look
         float mouseX = Input.GetAxis("Mouse X") * lookSpeed;
@@ -107,6 +129,8 @@ public class PlayerMovement : MonoBehaviour
 
         playerCamera.localRotation = Quaternion.Euler(verticalRotation +30, 0f, 0f);
         transform.Rotate(Vector3.up * mouseX);
+
+        animator.SetFloat("velocity",rb.velocity.magnitude);
 
 
     }
@@ -135,5 +159,11 @@ public class PlayerMovement : MonoBehaviour
             }
 
         }
+    }
+
+
+    void WalkingAnim()
+    {
+        animator.SetBool("isWalking",true);
     }
 }

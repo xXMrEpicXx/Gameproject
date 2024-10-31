@@ -4,15 +4,8 @@ using UnityEngine;
 
 public class Hitbox : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    void OnCollisionEnter(UnityEngine.Collision collision)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        print("masuk");
     }
 }
