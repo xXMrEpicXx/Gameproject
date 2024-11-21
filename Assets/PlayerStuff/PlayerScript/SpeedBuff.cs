@@ -6,7 +6,7 @@ public class SpeedBuff : MonoBehaviour
 {
     public PlayerMovement playerMovement;
     public float buffedSpeed = 10f;  // Set speed
-    private bool isBuffActive = false;
+    public bool isBuffActive = false;
 
     private float originalSpeed;
 
@@ -28,6 +28,7 @@ public class SpeedBuff : MonoBehaviour
         // Toggle speed buff
         if (Input.GetKeyDown(KeyCode.B))
         {
+            print("babi");
             ToggleBuff();
         }
     }
