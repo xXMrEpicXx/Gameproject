@@ -5,12 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - GameManager
-  - Interact
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Player
+  - 
   - Water
   - UI
   - Ground
