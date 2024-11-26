@@ -82,7 +82,8 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             animator.SetBool("Attacking",true);
-            StartCoroutine(Attacking());
+            WScript.Attack();
+            //StartCoroutine(Attacking());
             print("ayam");
             
         }
@@ -170,10 +171,8 @@ public class PlayerMovement : MonoBehaviour
 
 
 
-    IEnumerator Attacking()
+    /*IEnumerator Attacking()
     {
-        Collider collider = GetComponentInChildren<Collider>();
-        collider.enabled = true;
 
         
 
@@ -182,5 +181,5 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(.25f);
         animator.SetBool("Attacking",false);
         
-    }
+    }*/
 }

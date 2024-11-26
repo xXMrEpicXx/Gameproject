@@ -15,7 +15,19 @@ public class EntityHealth : MonoBehaviour
 
         if (health <= 0)
         {
+            CheckNumEnemy EnemyChecker = GameObject.FindGameObjectWithTag("GameManager").GetComponent<CheckNumEnemy>();
+            EnemyChecker.RemoveEnemy(1);
             Destroy(gameObject);
+        }
+    }
+
+    public void EnemyOrNot()
+    {
+        if (gameObject.tag == "Enemy")
+        {
+            CheckNumEnemy EnemyChecker = GameObject.FindGameObjectWithTag("GameManager").GetComponent<CheckNumEnemy>();
+            EnemyChecker.AddEnemy(1);
+            
         }
     }
 }

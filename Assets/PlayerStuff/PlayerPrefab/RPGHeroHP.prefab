@@ -1572,6 +1572,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad2dd75ba9a7f924f91528bacee0a51c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Attackstate: 0
   moveSpeed: 5
   lookSpeed: 2
   playerCamera: {fileID: 5368928847285046946}
@@ -2426,7 +2427,7 @@ Transform:
   m_GameObject: {fileID: 1853290393482302278}
   serializedVersion: 2
   m_LocalRotation: {x: 0.16428271, y: -0.0000007098221, z: 0.00000011821766, w: 0.9864133}
-  m_LocalPosition: {x: -0.65394497, y: 6.59, z: -6.0431743}
+  m_LocalPosition: {x: 0, y: 4.63, z: -6.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2702,6 +2703,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4996452485948724}
     m_Modifications:
+    - target: {fileID: 877851386733217787, guid: bf172d0f9ad8ad84a8b68ce75357ad4d, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5118464667818881840, guid: bf172d0f9ad8ad84a8b68ce75357ad4d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2745,6 +2750,10 @@ PrefabInstance:
     - target: {fileID: 5495412801541974410, guid: bf172d0f9ad8ad84a8b68ce75357ad4d, type: 3}
       propertyPath: m_Name
       value: Short Sword Standart
+      objectReference: {fileID: 0}
+    - target: {fileID: 5495412801541974410, guid: bf172d0f9ad8ad84a8b68ce75357ad4d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

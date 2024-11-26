@@ -7,11 +7,11 @@ public class SampleSword_WS : Weapon
 {
     // Start is called before the first frame update
     public int Damage;
-    public float HitBoxTime;
+
     void Start()
     {
         GameManager = GameObject.FindWithTag("GameManager");
-        HitBoxTime = .6f; 
+
     }
 
     // Update is called once per frame
@@ -22,10 +22,13 @@ public class SampleSword_WS : Weapon
 
     public override void Attack()
     {
-
+        print("MASUK");
+        BoxCollider col = GetComponent<BoxCollider>();
+        col.enabled = true;
+        return;
     }
 
-    void OnTriggerEnter(UnityEngine.Collider other)
+    void OnColliderEnter(Collider other)
     {
         if (!other.transform.CompareTag("Player"))
         {

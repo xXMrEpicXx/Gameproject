@@ -22,7 +22,7 @@ public class Weapon : MonoBehaviour
     // Update is called once per frame
     public virtual void Attack()
     {
-
+        print("masuk base class");
     }
 
     void Skill()
