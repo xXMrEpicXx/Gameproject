@@ -27,10 +27,10 @@ public class SampleSword_WS : Weapon
         col.enabled = true;
     }
 
-    void OnColliderEnter(Collider other)
+    void OnTriggerEnter(Collider other)
     {
         print("Collide");
-        if (!other.transform.CompareTag("Player"))
+        if (!other.CompareTag("Player"))
         {
             DamageHandle damageHandler = GameManager.GetComponent<DamageHandle>();
             damageHandler.DoDamage(Damage,other.transform);
