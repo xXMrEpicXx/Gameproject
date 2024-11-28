@@ -7,13 +7,13 @@ public class PlayerMovement : MonoBehaviour
 {
 
 
-    public bool Attackstate ;
+    public bool Attackstate;
 
     public float moveSpeed = 5f; // Speed of the player movement
     public float lookSpeed = 2f;  // Speed of the camera look
     public Transform playerCamera; // Reference to the camera transform
     public float sensitivity = 2f; // Mouse sensitivity
-    
+
 
 
 
@@ -51,7 +51,6 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
-        MovementSpeed = 5;
         Armor = 5;
         rb = GetComponent<Rigidbody>();
         WScript = GetComponentInChildren<Weapon>();
@@ -63,6 +62,9 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         MovementLogic();
+        HandleMovement();
+        UpdateAnimator();
+        HandleMouseLook();
 
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
@@ -81,11 +83,12 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            animator.SetBool("Attacking",true);
+            animator.SetBool("Attacking", true);
             WScript.Attack();
-            //StartCoroutine(Attacking());
-            print("ayam");
-            
+            BoxCollider box = GetComponentInChildren<BoxCollider>();
+            box.enabled=true;
+            StartCoroutine(Attacking(1));
+
         }
 
         if (Input.GetButtonDown("Jump"))
@@ -112,41 +115,55 @@ public class PlayerMovement : MonoBehaviour
             coyoteTimer -= Time.deltaTime;
         }
 
+    }
+
+    void HandleMovement()
+    {
         // Get input for movement
-        float moveX = Input.GetAxis("Horizontal") * moveSpeed;
-        float moveZ = Input.GetAxis("Vertical") * moveSpeed;
+        float moveX = Input.GetAxis("Horizontal");
+        float moveZ = Input.GetAxis("Vertical");
 
-        // Create movement vector based on input
-        Vector3 move = (transform.right * moveX + transform.forward * moveZ)*Time.deltaTime;
+        // Create movement vector relative to player's orientation
+        Vector3 move = (transform.right * moveX + transform.forward * moveZ).normalized;
 
-        // Set the velocity of the Rigidbody
-        rb.velocity = new Vector3(move.x*moveSpeed, rb.velocity.y, move.z*moveSpeed); // Keep the vertical velocity unchanged
+        // Apply movement to Rigidbody, preserving Y velocity
+        Vector3 velocity = move * moveSpeed;
+        velocity.y = rb.velocity.y; // Preserve vertical velocity (e.g., for gravity or jumps)
+        rb.velocity = velocity;
+    }
 
-        // Mouse look
+    void HandleMouseLook()
+    {
+        // Get mouse input
         float mouseX = Input.GetAxis("Mouse X") * lookSpeed;
         float mouseY = Input.GetAxis("Mouse Y") * lookSpeed;
 
+        // Adjust vertical rotation and clamp it
         verticalRotation -= mouseY;
         verticalRotation = Mathf.Clamp(verticalRotation, -90f, 90f);
 
-        playerCamera.localRotation = Quaternion.Euler(verticalRotation +30, 0f, 0f);
+        // Rotate camera vertically and player horizontally
+        playerCamera.localRotation = Quaternion.Euler(verticalRotation + 30, 0f, 0f); // Adjusted for camera tilt
         transform.Rotate(Vector3.up * mouseX);
+    }
 
-        animator.SetFloat("velocity",rb.velocity.magnitude);
-
-
+    void UpdateAnimator()
+    {
+        // Update the "velocity" parameter based on horizontal movement speed
+        Vector3 horizontalVelocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+        animator.SetFloat("velocity", horizontalVelocity.magnitude);
     }
 
 
     void Dash()
     {
-       
+
     }
 
 
     void Ult()
     {
-        
+
     }
 
 
@@ -166,20 +183,24 @@ public class PlayerMovement : MonoBehaviour
 
     void WalkingAnim()
     {
-        animator.SetBool("isWalking",true);
+        animator.SetBool("isWalking", true);
     }
 
 
 
-    /*IEnumerator Attacking()
+    IEnumerator Attacking(float attackDuration)
     {
+        BoxCollider box = GetComponentInChildren<BoxCollider>();
+        // Start the attacking animation
+        Animator animator = GetComponent<Animator>();
+        animator.SetBool("Attacking", true);
 
-        
+        // Wait for the duration of the attack
+        yield return new WaitForSeconds(attackDuration);
 
-        print("goreng");
-        // suspend execution for 5 seconds
-        yield return new WaitForSeconds(.25f);
-        animator.SetBool("Attacking",false);
+        // End the attacking animation
+        animator.SetBool("Attacking", false);
+        box.enabled = false;
         
-    }*/
+    }
 }

@@ -1577,13 +1577,13 @@ MonoBehaviour:
   lookSpeed: 2
   playerCamera: {fileID: 5368928847285046946}
   sensitivity: 2
-  jumpForce: 100
+  jumpForce: 10
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
   isGrounded: 0
-  MovementSpeed: 0
-  Armor: 0
+  MovementSpeed: 1000
+  Armor: 5
   WScript: {fileID: 0}
   Ability: {fileID: 0}
   animator: {fileID: 0}

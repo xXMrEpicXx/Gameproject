@@ -22,14 +22,14 @@ public class SampleSword_WS : Weapon
 
     public override void Attack()
     {
-        print("MASUK");
+        print("Masuk Attack Script Senjata (Melee)");
         BoxCollider col = GetComponent<BoxCollider>();
         col.enabled = true;
-        return;
     }
 
     void OnColliderEnter(Collider other)
     {
+        print("Collide");
         if (!other.transform.CompareTag("Player"))
         {
             DamageHandle damageHandler = GameManager.GetComponent<DamageHandle>();

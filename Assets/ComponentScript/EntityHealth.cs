@@ -23,8 +23,10 @@ public class EntityHealth : MonoBehaviour
 
     public void EnemyOrNot()
     {
-        if (gameObject.tag == "Enemy")
+        if (this.tag == "Enemy")
         {
+
+            print(this.tag);
             CheckNumEnemy EnemyChecker = GameObject.FindGameObjectWithTag("GameManager").GetComponent<CheckNumEnemy>();
             EnemyChecker.AddEnemy(1);
             

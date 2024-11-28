@@ -5,6 +5,7 @@ using UnityEngine.AI;
 
 public class AIControl : MonoBehaviour
 {
+    //ini bagian AI
     public NavMeshAgent navMeshAgent;
     public float startWaitTime = 4;
     public float timeToRotate = 2;
@@ -29,9 +30,18 @@ public class AIControl : MonoBehaviour
     bool m_isPatrol;
     bool m_CaughtPlayer;
 
+    //ini bagian untuk setup status
+    public EntityHealth Health;
+
+
+
+
+    //ini untuk prepare status
+
     // Start is called before the first frame update
     void Start()
     {
+        //bagian AI
         m_PlayerPosition = Vector3.zero;
         m_isPatrol = true;
         m_CaughtPlayer = false;
@@ -44,6 +54,15 @@ public class AIControl : MonoBehaviour
         navMeshAgent.isStopped = false;
         navMeshAgent.speed = speedWalk;
         navMeshAgent.SetDestination(waypoints[m_CurrentWaypointIndex].position);
+
+        //ini atur status
+
+    }
+
+    void Awake()
+    {
+        Health.SetHealth(10);
+        Health.EnemyOrNot();
     }
 
     // Update is called once per frame
@@ -208,4 +227,5 @@ public class AIControl : MonoBehaviour
             }
         }
     }
+
 }
