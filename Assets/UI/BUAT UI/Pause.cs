@@ -4,39 +4,38 @@ using UnityEngine;
 
 public class Pause : MonoBehaviour
 {
-    public GameObject pauseMenu; 
-    public static bool IsPaused;
+    public GameObject pausedMenu;
+    public bool IsPaused;
     // Start is called before the first frame update
-    void Start()
-    {
-        pauseMenu.SetActive(false);
-    }
+    void Start() => pausedMenu.SetActive(false);
 
     // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if(!IsPaused)
+            if (IsPaused)
             {
-                ResumeGame();
+                resumeGame();
             }
             else
             {
-                PausedGame();
+                pausedGame();
             }
+
         }
     }
-    public void PausedGame()
+    public void pausedGame()
     {
-        pauseMenu.SetActive(true);
+        pausedMenu.SetActive(true);
         Time.timeScale = 0f;
         IsPaused = true;
     }
-    public void ResumeGame()
+    public void resumeGame()
     {
-        pauseMenu.SetActive(false);
+        pausedMenu.SetActive(false);
         Time.timeScale = 1f;
         IsPaused = false;
     }
+
 }
