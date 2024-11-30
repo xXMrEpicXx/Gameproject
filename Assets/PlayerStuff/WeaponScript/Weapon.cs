@@ -1,11 +1,13 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Properties;
 using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
     // Start is called before the first frame update
+    [SerializeField] private int Damage;
     public Camera cam;
     public float AttackSpeed;
     public float CritChance;
@@ -30,8 +32,15 @@ public class Weapon : MonoBehaviour
 
     }
 
+    public void DamageSetter(int newDamage)
+    {
+        Damage = newDamage;
+    }
+
+    public int DamageGetter()
+    {
+        return Damage;
+    }
     
-
-
     //universal weapon script klo inherit ae ini
 }

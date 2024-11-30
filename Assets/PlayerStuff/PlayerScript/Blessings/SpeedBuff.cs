@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpeedBuff : MonoBehaviour
+public class SpeedBuff : BlessingRoot
 {
+        int BlessingID = 2;
     public PlayerMovement playerMovement;
     public float buffedSpeed = 10f;  // Set speed
     private bool isBuffActive = false;
@@ -28,6 +29,7 @@ public class SpeedBuff : MonoBehaviour
         // Toggle speed buff
         if (Input.GetKeyDown(KeyCode.B))
         {
+            print("babi");
             ToggleBuff();
         }
     }

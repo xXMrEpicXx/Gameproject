@@ -30,9 +30,6 @@ public class AIControl : MonoBehaviour
     bool m_isPatrol;
     bool m_CaughtPlayer;
 
-    //ini bagian untuk setup status
-    public EntityHealth Health;
-
 
 
 
@@ -59,11 +56,7 @@ public class AIControl : MonoBehaviour
 
     }
 
-    void Awake()
-    {
-        Health.SetHealth(10);
-        Health.EnemyOrNot();
-    }
+
 
     // Update is called once per frame
     void Update()

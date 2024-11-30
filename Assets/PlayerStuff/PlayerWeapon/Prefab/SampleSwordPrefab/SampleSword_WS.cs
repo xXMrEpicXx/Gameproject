@@ -6,10 +6,10 @@ using UnityEngine;
 public class SampleSword_WS : Weapon
 {
     // Start is called before the first frame update
-    public int Damage;
 
     void Start()
     {
+        DamageSetter(5);
         GameManager = GameObject.FindWithTag("GameManager");
 
     }
@@ -33,7 +33,7 @@ public class SampleSword_WS : Weapon
         if (!other.CompareTag("Player"))
         {
             DamageHandle damageHandler = GameManager.GetComponent<DamageHandle>();
-            damageHandler.DoDamage(Damage,other.transform);
+            damageHandler.DoDamage(base.DamageGetter(),other.transform);
 
         }
         

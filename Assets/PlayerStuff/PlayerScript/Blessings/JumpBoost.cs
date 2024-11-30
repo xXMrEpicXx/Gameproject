@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class JumpBoost : MonoBehaviour
+public class JumpBoost : BlessingRoot
 {
+    int BlessingID = 1;
     public PlayerMovement playerMovement;
     public float boostedJumpForce;
     private bool isBoostActive = false;
