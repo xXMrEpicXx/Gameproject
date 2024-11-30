@@ -130,34 +130,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2215374754809618440, guid: d4f9c6abbdf384d879010edcadedc819, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2215374754809618440, guid: d4f9c6abbdf384d879010edcadedc819, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2215374754809618440, guid: d4f9c6abbdf384d879010edcadedc819, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2215374754809618440, guid: d4f9c6abbdf384d879010edcadedc819, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2215374754809618440, guid: d4f9c6abbdf384d879010edcadedc819, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 632
-      objectReference: {fileID: 0}
-    - target: {fileID: 2215374754809618440, guid: d4f9c6abbdf384d879010edcadedc819, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 112.435486
-      objectReference: {fileID: 0}
-    - target: {fileID: 2215374754809618440, guid: d4f9c6abbdf384d879010edcadedc819, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 82.00001
-      objectReference: {fileID: 0}
     - target: {fileID: 3281619192936831337, guid: d4f9c6abbdf384d879010edcadedc819, type: 3}
       propertyPath: m_Name
       value: Dialog
