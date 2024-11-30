@@ -1,14 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class Pause : MonoBehaviour
 {
-    public GameObject pausedMenu;
+    public GameObject PausedMenu;
     public static bool IsPaused;
     // Start is called before the first frame update
-    void Start() => pausedMenu.SetActive(false);
-
+    void Start()
+    {
+        PausedMenu.SetActive(false);
+    }
     // Update is called once per frame
     void Update()
     {
@@ -27,15 +29,18 @@ public class Pause : MonoBehaviour
     }
     public void pausedGame()
     {
-        pausedMenu.SetActive(true);
+        PausedMenu.SetActive(true);
         Time.timeScale = 0f;
         IsPaused = true;
     }
     public void resumeGame()
     {
-        pausedMenu.SetActive(false);
+        PausedMenu.SetActive(false);
         Time.timeScale = 1f;
         IsPaused = false;
     }
-
+    public void MainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
 }
